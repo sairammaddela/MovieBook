@@ -136,6 +136,10 @@ form{
     align-items: center;
     gap: 1rem;
 }
+#movieimage{
+    width: 500px;
+    height: 350px;
+}
 @media screen and (width<480px){
     .genreitem{
         font-size: small;
