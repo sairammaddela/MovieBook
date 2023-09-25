@@ -1182,50 +1182,40 @@ paybtn.addEventListener("click",()=>{
 });
 const paid=document.getElementById("finalpay");
 paid.innerText="Pay 149Rs";
+let videospage=document.getElementById("vidoes");
+const download=document.createElement("button");
 paid.addEventListener("click",()=>{
     console.log(tmdb_id);
-    const apiendpoint=`https://api.themoviedb.org/3/movie/${tmdb_id}/videos?language=en-US`;
-    const accesstoken="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDA4ZGE4YTE2NTZkNjNmZmYyZjQwZTQwZTNiMmJiNSIsInN1YiI6IjY1MDQwMDUxNmEyMjI3MDBjM2I3ZGZlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.85r15wx6lm6UFbM8UB0J12Uwv8_L6eychwHX6ue6Op0";
-    const headers={
-      "Authorization":`Bearer ${accesstoken}`
-    }
-    fetch(apiendpoint,{headers}).then((data)=>{
-      data.json().then((data1)=>{
-        //console.log(data1.results[i].type);
-        let ytkey="";
-        data1.results.forEach((val)=>{
-          if(val.type==="Trailer")
-          {
-            ytkey=val.key;
-            try{
-              throw new Error('BreakException');
-            }
-            catch(e)
-            {
-              if(e.message==="BreakException")
-              {
-                return;
-              }
-            }
-          }
-        });
-       
-        const yturl=`https://www.youtube.com/watch?v=${ytkey}`;
-        const download=document.createElement("button");
-    const anc=document.createElement("a");
     download.setAttribute("type","button");
-    
-    anc.setAttribute("href",`${yturl}`);
     //anc.setAttribute("download","test");
     download.className="btn btn-primary";
-    anc.innerText="Play";
-    anc.style.textDecoration="none"
-    anc.style.color="white";
-    download.append(anc);
+    download.innerText="Play";
     paymentcard.append(download);
-      })
-    })
 });
+download.addEventListener("click",()=>{
+  const toggle=document.getElementById("toggle1");
+  toggle.id="toggle";
+  videospage.id="video1";
+  const apiendpoint=`https://api.themoviedb.org/3/movie/${tmdb_id}/videos?language=en-US`;
+  const accesstoken="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDA4ZGE4YTE2NTZkNjNmZmYyZjQwZTQwZTNiMmJiNSIsInN1YiI6IjY1MDQwMDUxNmEyMjI3MDBjM2I3ZGZlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.85r15wx6lm6UFbM8UB0J12Uwv8_L6eychwHX6ue6Op0";
+  const headers={
+    "Authorization":`Bearer ${accesstoken}`
+  }
+  fetch(apiendpoint,{headers}).then((data)=>{
+    data.json().then((data1)=>{
+      //console.log(data1.results[i].type);
+      let ytkey="";
+      
+      data1.results.forEach((val)=>{
+        
+          ytkey=val.key;
+          videospage.innerHTML=`${videospage.innerHTML}<iframe width="300" height="250" src="https://www.youtube.com/embed/${ytkey}?si=m66Z9WAjAfJLoaTJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+      });
+    });
+  });
+});
+
+
 
 
 

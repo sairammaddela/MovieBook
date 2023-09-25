@@ -124,6 +124,18 @@ form{
     background-color: black;
     color: white;
 }
+#vidoes{
+    display: none;
+}
+#video1{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 @media screen and (width<480px){
     .genreitem{
         font-size: small;
