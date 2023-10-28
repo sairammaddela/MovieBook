@@ -90,6 +90,85 @@ close_fun.addEventListener("click",()=>{
 })
 let ul=document.getElementById("genrelist");
 let z=0;
+let idupdate=document.getElementById("genrelist");
+function genresearch(e)
+{
+  ul.remove();
+  idupdate.remove();
+  const ull=document.createElement("ul");
+  ull.id="genrelist";
+  genres.forEach((ele)=>{
+    const smallele=ele.name.toLowerCase();
+    const smallvalue=e.target.value.toLowerCase();
+    if(smallele.includes(smallvalue))
+    {
+      const li=document.createElement("li");
+    const btn=document.createElement("button");
+    btn.innerText=ele.name;
+    console.log(e.target.value);
+    btn.style.color="white";
+    //btn.id=`genrebtn${z}`;
+    btn.setAttribute("onclick","handlefilterbutton(event)")
+    btn.className="genrebtn";
+    li.className="genreitem";
+    li.append(btn);
+    ull.append(li);
+    generes.append(ull);
+    idupdate=document.getElementById("genrelist");
+    }
+  })
+}
+function handlefilterbutton(event)
+{
+  let genre_id_btn=0;
+    //console.log(genre_action1.innerText);
+    genres.forEach((val)=>{
+        if(val.name==event.target.innerText)
+        {
+            genre_id_btn=val.id;
+        }
+    });
+    const cardItems=document.querySelector(".cardlist");
+    cardItems.remove();
+    const maintemp=document.querySelector(".main_temp");
+    const cardlist2=document.createElement("div");
+    cardlist2.setAttribute("class","cardlist");
+    maintemp.append(cardlist2);
+
+
+    for(let i=2023;i>2020;i--)
+    {
+      async function promise(){
+        const promise1=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=7408da8a1656d63fff2f40e40e3b2bb5&primary_release_year=${i}&with_genres=${genre_id_btn}`)
+          const res=await promise1.json();
+              res.results.forEach(element => {
+          
+                  let b=document.createElement("div");
+                  b.className="cardItem";
+                  let anchor=document.createElement("button");
+                  anchor.className="anch-btn";
+                  anchor.setAttribute("onclick","checkoutHandler(event)");
+                  anchor.setAttribute("value",`https://api.themoviedb.org/3/movie/${element.id}?api_key=7408da8a1656d63fff2f40e40e3b2bb5`);
+                  b.append(anchor);
+                  let image=document.createElement("img");
+                  image.setAttribute("src",`https://image.tmdb.org/t/p/original/${element.poster_path}`);
+                  image.setAttribute("height","250px");
+                  image.setAttribute("width","200px");
+                  const para=document.createElement("h3");
+                  para.innerText=element.original_title;
+                  anchor.append(image);
+                  anchor.append(para);
+                  cardlist2.append(b);
+                  
+              });
+          
+        }
+        promise();
+
+
+    }
+  //console.log(event.target.innerText);
+}
 genres.forEach((ele)=>{
     const li=document.createElement("li");
     const btn=document.createElement("button");
