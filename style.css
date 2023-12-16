@@ -14,22 +14,80 @@
     display: flex;
 }
 .main{
-    min-height:86vh;
+    min-height:84vh;
     border: 1px solid black;
     display: flex;
 }
 .Genre{
-    display: none;
+    /* display: none; */
+    animation-name: example1;
+    animation-duration: 1s;
 }
+@keyframes example1{
+    100% {min-width: 0vw;}
+    95%  {min-width: 1vw;}
+    90%  {min-width: 2vw;}
+    85%  {min-width: 3vw;}
+    80%  {min-width: 4vw;}
+    75%  {min-width: 5vw;}
+    70%  {min-width: 6vw;}
+    65%  {min-width: 7vw;}
+    60%  {min-width: 8vw;}
+    55%  {min-width: 9vw;}
+    50%  {min-width: 10vw;}
+    45%  {min-width: 11vw;}
+    40%  {min-width: 12vw;}
+    35%  {min-width: 13vw;}
+    30%  {min-width: 14vw;}
+    25%  {min-width: 15vw;}
+    20%  {min-width: 16vw;}
+    15%  {min-width: 17vw;}
+    10%  {min-width: 18vw;}
+    5%  {min-width: 19vw;}
+    0% {min-width: 20vw;}
+}
+
 .Genre1{
-    min-width: 20vw;
+    min-width: 22vw;
     border: 1px solid black;
-    transition: all .5s;
-    transition-delay: 1s;
+    /* transition: all .5s;
+    transition-delay: 1s; */
+    height: 80vh;
+    overflow-y: scroll;
+    animation-name: example;
+    animation-duration: 1s;
+}
+@keyframes example{
+    0%   {min-width: 0vw;}
+    5%  {min-width: 1vw;}
+    10%  {min-width: 2vw;}
+    15%  {min-width: 3vw;}
+    20%  {min-width: 4vw;}
+    25%  {min-width: 5vw;}
+    30%  {min-width: 6vw;}
+    35%  {min-width: 7vw;}
+    40%  {min-width: 8vw;}
+    45%  {min-width: 9vw;}
+    50%  {min-width: 10vw;}
+    55%  {min-width: 11vw;}
+    60%  {min-width: 12vw;}
+    65%  {min-width: 13vw;}
+    70%  {min-width: 14vw;}
+    75%  {min-width: 15vw;}
+    80%  {min-width: 16vw;}
+    85%  {min-width: 17vw;}
+    90%  {min-width: 18vw;}
+    95%  {min-width: 19vw;}
+    100% {min-width: 20vw;}
 }
 .main_temp{
-    min-width: 77.5vw;
+    min-width: 71vw;
     margin-left: 1.2rem;
+    z-index: 100;
+    background-color: black;
+    height: 80vh;
+    overflow-y: auto;
+
 }
 ul{
     list-style: none;
@@ -157,5 +215,13 @@ form{
     #toggle1 {
         display: block;
         width: 300px;
+    }
+    .cardItem{
+        height: 200px;
+        width:150px;
+    }
+    
+    #Geners-btn{
+        font-size: x-small;
     }
 }

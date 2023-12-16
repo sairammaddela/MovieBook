@@ -79,14 +79,21 @@ let card=document.querySelector('.cardlist');
     ];
 let generes_btn=document.getElementById("Geners-btn");
 let generes=document.querySelector(".Genre");
+generes.style.display="none";
 generes_btn.addEventListener("click",()=>{
   generes.className="Genre1";
+  generes.style.display="block";
   generes_btn.style.display="none";
+  //generes_btn.style.minWidth="20vw";
 });
 let close_fun=document.getElementById("close");
 close_fun.addEventListener("click",()=>{
   generes.className="Genre";
-  generes_btn.style.display="flex";
+  
+  setTimeout(()=>{
+    generes.style.display="none";
+    generes_btn.style.display="flex";
+  },1000);
 })
 let ul=document.getElementById("genrelist");
 let z=0;
